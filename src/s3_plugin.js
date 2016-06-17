@@ -276,6 +276,11 @@ module.exports = class S3Plugin {
       s3Params.ContentEncoding = 'gzip'
     }
 
+    if (/\.js\.gz/.test(fileName)) {
+      s3Params.ContentType = 'application/javascript'
+      s3Params.ContentEncoding = 'gzip'
+    }
+
     upload = this.client.uploadFile({
       localFile: file,
       s3Params
